@@ -1,0 +1,29 @@
+Assignment No. 6
+Program Code:
+# Selection Sort Implementation def selection_sort(arr):
+n = len(arr)
+for i in range(n): min_index = i
+for j in range(i + 1, n):
+if arr[j] < arr[min_index]: min_index = j
+arr[i], arr[min_index] = arr[min_index], arr[i] return arr
+# Bubble Sort Implementation def bubble_sort(arr):
+n = len(arr)
+for i in range(n - 1):
+for j in range(n - i - 1): if arr[j] > arr[j + 1]:
+arr[j], arr[j + 1] = arr[j + 1], arr[j]
+return arr
+# Example Employee Salaries (Floating-Point Numbers)
+salaries = [45000.75, 52000.25, 61000.50, 49000.00, 73000.80,
+88000.20, 65000.10, 41000.00, 56000.45, 79000.35]
+
+print("Original Salaries:") print(salaries)
+# Sorting Using Selection Sort
+selection_sorted = selection_sort(salaries.copy()) print("\nSalaries Sorted (Selection Sort):") print(selection_sorted)
+# Sorting Using Bubble Sort
+bubble_sorted = bubble_sort(salaries.copy()) print("\nSalaries Sorted (Bubble Sort):") print(bubble_sorted)
+# Display Top 5 Highest Salaries
+top_five = sorted(salaries, reverse=True)[:5] print("\nTop 5 Highest Salaries:")
+for i, salary in enumerate(top_five, start=1): print(f"{i}. ₹{salary:.2f}")
+ 
+Output :
+
