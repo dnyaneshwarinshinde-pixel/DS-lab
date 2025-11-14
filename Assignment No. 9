@@ -1,0 +1,49 @@
+Assignment No. 9
+Program Code:
+import heapq
+
+#
+# Function: Dijkstra's Algorithm #
+def dijkstra(graph, start):
+# Initialize distances with infinity
+distances = {node: float('inf') for node in graph} distances[start] = 0 # Distance to start node is 0
+
+# Priority queue to get the next node with minimum distance pq = [(0, start)] # (distance, node)
+
+while pq:
+current_distance, current_node = heapq.heappop(pq)
+
+# Skip if we've already found a shorter path if current_distance > distances[current_node]:
+continue
+
+# Check neighbors
+for neighbor, weight in graph[current_node]: distance = current_distance + weight
+
+# If a shorter path is found
+if distance < distances[neighbor]: distances[neighbor] = distance heapq.heappush(pq, (distance, neighbor))
+
+return distances
+
+
+#
+# Example Graph (City Map) #
+# Each edge represents time (in minutes) between locations graph = {
+'Shop': [('A', 10), ('B', 3)],
+'A': [('Shop', 10), ('B', 1), ('C', 2)],
+'B': [('Shop', 3), ('A', 1), ('C', 8), ('D', 2)],
+'C': [('A', 2), ('B', 8), ('D', 7), ('E', 5)],
+'D': [('B', 2), ('C', 7), ('E', 1)],
+'E': [('C', 5), ('D', 1)]
+}
+ 
+
+# Starting point (Pizza Shop) start_location = 'Shop'
+
+#
+# Run Dijkstra's Algorithm #
+shortest_times = dijkstra(graph, start_location)
+
+#
+# Display Results #
+print("===== Minimum Time to Deliver Pizzas from Shop =====") for location, time in shortest_times.items():
+print(f"To reach {location}: {time} minutes
